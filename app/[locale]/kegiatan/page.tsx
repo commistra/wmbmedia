@@ -19,6 +19,14 @@ export default async function KegiatanPage({
   } catch {
     activities = [];
   }
+  const safeActivities = activities.map((a) => ({
+    id: a.id,
+    title: a.title,
+    date: a.date,
+    location: a.location,
+    summary: a.summary,
+    coverImageUrl: a.coverImageUrl,
+  }));
 
   return (
     <main className="mx-auto w-full max-w-6xl px-5 pb-24 pt-12 sm:px-8">
@@ -36,13 +44,12 @@ export default async function KegiatanPage({
 
       <KegiatanClient
         locale={locale}
-        activities={activities}
+        activities={safeActivities}
         dict={{
           empty: dict.activities.empty,
           readMore: dict.activities.readMore,
           searchPlaceholder: locale === "id" ? "Cari kegiatan..." : "Search activities...",
-          showing: (visible, total) =>
-            locale === "id" ? `Menampilkan ${visible} dari ${total}` : `Showing ${visible} of ${total}`,
+          showingPrefix: locale === "id" ? "Menampilkan" : "Showing",
         }}
       />
     </main>

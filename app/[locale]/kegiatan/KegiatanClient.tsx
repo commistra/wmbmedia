@@ -24,7 +24,7 @@ export default function KegiatanClient({
     empty: string;
     readMore: string;
     searchPlaceholder: string;
-    showing: (visible: number, total: number) => string;
+    showingPrefix: string;
   };
   activities: Activity[];
 }) {
@@ -47,7 +47,9 @@ export default function KegiatanClient({
             className="h-11 w-full rounded-2xl border border-black/10 bg-white/70 px-4 text-sm text-zinc-950 outline-none focus:border-pink-500/40"
           />
           <div className="mt-2 text-xs text-zinc-600">
-            {dict.showing(filtered.length, activities.length)}
+            {locale === "id"
+              ? `${dict.showingPrefix} ${filtered.length} dari ${activities.length}`
+              : `${dict.showingPrefix} ${filtered.length} of ${activities.length}`}
           </div>
         </div>
       </div>
@@ -101,4 +103,3 @@ export default function KegiatanClient({
     </div>
   );
 }
-
