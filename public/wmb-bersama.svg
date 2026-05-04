@@ -1,0 +1,37 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="0.55" stop-color="#111827"/>
+      <stop offset="1" stop-color="#0B1220"/>
+    </linearGradient>
+    <radialGradient id="r" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1160 260) rotate(140) scale(740 520)">
+      <stop stop-color="#FF4F81" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FF4F81" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="o" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(440 620) rotate(20) scale(760 520)">
+      <stop stop-color="#F59E0B" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="900" rx="48" fill="url(#g)"/>
+  <rect width="1600" height="900" rx="48" fill="url(#r)"/>
+  <rect width="1600" height="900" rx="48" fill="url(#o)"/>
+
+  <g opacity="0.85">
+    <circle cx="560" cy="410" r="78" fill="#E5E7EB"/>
+    <circle cx="800" cy="360" r="92" fill="#F3F4F6"/>
+    <circle cx="1040" cy="410" r="78" fill="#E5E7EB"/>
+    <path d="M430 690c18-98 88-152 170-152s152 54 170 152" stroke="#E5E7EB" stroke-width="44" stroke-linecap="round"/>
+    <path d="M670 700c18-112 96-176 190-176s172 64 190 176" stroke="#F3F4F6" stroke-width="48" stroke-linecap="round"/>
+    <path d="M910 690c18-98 88-152 170-152s152 54 170 152" stroke="#E5E7EB" stroke-width="44" stroke-linecap="round"/>
+  </g>
+
+  <g opacity="0.95">
+    <rect x="92" y="86" width="560" height="94" rx="24" fill="white" fill-opacity="0.08"/>
+    <text x="132" y="146" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="40" font-weight="700" fill="white">Foto bersama WMB</text>
+    <text x="92" y="820" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="22" font-weight="500" fill="#E5E7EB">Ganti file ini dengan foto asli: public/wmb-bersama.jpg atau .png</text>
+  </g>
+</svg>
+
