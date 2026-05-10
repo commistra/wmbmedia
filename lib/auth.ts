@@ -3,12 +3,9 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { getUserByEmail, getUserByIdentifier } from "./users";
+import { getUserByIdentifier } from "./users";
 import { verifyPassword } from "./password";
-
-const ALLOWED_EMAIL =
-  process.env.ADMIN_EMAIL_ALLOWLIST?.split(",").map((s) => s.trim())?.filter(Boolean) ??
-  ["bwfzbw@gmail.com"];
+import { isAdminEmail } from "./authz";
 
 let googleClientId = process.env.GOOGLE_CLIENT_ID || "";
 let googleClientSecret = process.env.GOOGLE_CLIENT_SECRET || "";
@@ -61,12 +58,7 @@ export const authOptions: NextAuthOptions = {
       if (!email) return false;
 
       if (account?.provider === "credentials") return true;
-
-      const allowlist = ALLOWED_EMAIL.map((e) => e.toLowerCase());
-      if (allowlist.includes(email)) return true;
-
-      const existing = await getUserByEmail(email);
-      return Boolean(existing && existing.role === "admin");
+      return isAdminEmail(email);
     },
   },
 };

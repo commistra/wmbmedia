@@ -7,6 +7,19 @@ import { notFound } from "next/navigation";
 import { getWmbWhatsAppJoinUrl } from "../../lib/whatsapp";
 import ExpandableText from "../components/ExpandableText";
 import { listActivities } from "../../lib/activities";
+import { listUmkms } from "../../lib/umkm";
+
+function toWaUrl(value?: string) {
+  const raw = (value ?? "").trim();
+  const stripped = raw.replace(/[^\d+]/g, "");
+  const noPlus = stripped.startsWith("+") ? stripped.slice(1) : stripped;
+  const digits = noPlus.replace(/\D/g, "");
+  if (!digits) return null;
+  if (digits.startsWith("62")) return `https://wa.me/${digits}`;
+  if (digits.startsWith("0")) return `https://wa.me/62${digits.slice(1)}`;
+  if (digits.startsWith("8")) return `https://wa.me/62${digits}`;
+  return `https://wa.me/${digits}`;
+}
 
 function DotGrid() {
   return (
@@ -42,6 +55,13 @@ export default async function Home({
     latestActivities = [];
   }
   latestActivities = latestActivities.filter((a) => a.published).slice(0, 3);
+
+  let latestUmkms: Awaited<ReturnType<typeof listUmkms>> = [];
+  try {
+    latestUmkms = await listUmkms({ limit: 6 });
+  } catch {
+    latestUmkms = [];
+  }
 
   return (
     <main id="beranda" className="mx-auto max-w-6xl px-5 sm:px-8">
@@ -256,6 +276,74 @@ export default async function Home({
             </div>
           </FadeIn>
         </section>
+
+        {latestUmkms.length ? (
+          <section id="umkm" className="pb-20 md:pb-28">
+            <FadeIn>
+              <div className="rounded-3xl border border-black/10 bg-white/70 p-8 shadow-sm backdrop-blur md:p-10">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-tight text-zinc-950">
+                      {locale === "id" ? "UMKM Terdaftar" : "Registered SMEs"}
+                    </h3>
+                    <p className="mt-3 text-base leading-7 text-zinc-700">
+                      {locale === "id"
+                        ? "Beberapa UMKM yang sudah terdaftar di komunitas."
+                        : "A few SMEs registered in the community."}
+                    </p>
+                  </div>
+                  <Link
+                    href={`/${locale}/umkm`}
+                    className="inline-flex h-11 items-center justify-center rounded-full border border-black/10 bg-white/70 px-5 text-sm font-semibold text-zinc-900 backdrop-blur transition-colors hover:bg-white"
+                  >
+                    {locale === "id" ? "Lihat semua" : "View all"}
+                  </Link>
+                </div>
+
+                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {latestUmkms.slice(0, 6).map((u) => {
+                    const waUrl = toWaUrl(u.whatsappE164 || u.whatsapp);
+                    return (
+                      <div
+                        key={u.id}
+                        className="overflow-hidden rounded-3xl border border-black/10 bg-white/70 shadow-sm backdrop-blur"
+                      >
+                        <div className="p-6">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="min-w-0">
+                              <div className="truncate text-lg font-semibold text-zinc-950">
+                                {u.storeName}
+                              </div>
+                              <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                                WMB ID: {u.wmbId}
+                              </div>
+                            </div>
+                            {waUrl ? (
+                              <a
+                                href={waUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-zinc-900 px-4 text-xs font-semibold text-white transition-colors hover:bg-zinc-800"
+                              >
+                                WhatsApp
+                              </a>
+                            ) : null}
+                          </div>
+                          <div className="mt-3 line-clamp-4 text-sm leading-6 text-zinc-700">
+                            {u.description}
+                          </div>
+                          <div className="mt-4 truncate text-xs text-zinc-600">
+                            {u.whatsapp}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </FadeIn>
+          </section>
+        ) : null}
 
         <section className="pb-20 md:pb-28">
           <FadeIn>

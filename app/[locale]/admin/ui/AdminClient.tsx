@@ -371,6 +371,12 @@ export default function AdminClient({
             Register Admin
           </Link>
           <Link
+            href={`/${locale}/admin/umkm`}
+            className="inline-flex h-10 items-center justify-center rounded-full border border-black/10 bg-white/70 px-4 text-xs font-semibold text-zinc-900 backdrop-blur transition-colors hover:bg-white"
+          >
+            {locale === "id" ? "Admin UMKM" : "UMKM Admin"}
+          </Link>
+          <Link
             href={`/${locale}/admin/password`}
             className="inline-flex h-10 items-center justify-center rounded-full border border-black/10 bg-white/70 px-4 text-xs font-semibold text-zinc-900 backdrop-blur transition-colors hover:bg-white"
           >

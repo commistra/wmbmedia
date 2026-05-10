@@ -12,6 +12,7 @@ type Dictionary = {
       home: string;
       about: string;
       activities: string;
+      umkm: string;
       gallery: string;
       contact: string;
       allActivities: string;
@@ -89,6 +90,7 @@ const DICTS: Record<Locale, Dictionary> = {
         home: "Beranda",
         about: "Tentang Kami",
         activities: "Kegiatan",
+        umkm: "UMKM",
         gallery: "Galeri",
         contact: "Kontak",
         allActivities: "Semua Kegiatan",
@@ -191,6 +193,7 @@ const DICTS: Record<Locale, Dictionary> = {
         home: "Home",
         about: "About",
         activities: "Activities",
+        umkm: "SMEs",
         gallery: "Gallery",
         contact: "Contact",
         allActivities: "All Activities",

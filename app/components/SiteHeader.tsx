@@ -20,6 +20,7 @@ export default function SiteHeader({
       home: string;
       about: string;
       activities: string;
+      umkm: string;
       gallery: string;
       contact: string;
       allActivities: string;
@@ -50,6 +51,7 @@ export default function SiteHeader({
       { label: dict.nav.home, href: h("#beranda"), kind: "hash" },
       { label: dict.nav.about, href: h("#tentang"), kind: "hash" },
       { label: dict.nav.activities, href: `/${locale}/kegiatan`, kind: "page" },
+      { label: dict.nav.umkm, href: `/${locale}/umkm`, kind: "page" },
       { label: dict.nav.gallery, href: h("#galeri"), kind: "hash" },
       { label: dict.nav.contact, href: h("#kontak"), kind: "hash" },
       { label: dict.nav.admin, href: `/${locale}/admin`, kind: "page" },
