@@ -381,6 +381,38 @@ export default async function Home({
 
         <GallerySection dict={dict.gallery} />
 
+        <section id="donasi" className="pb-20 md:pb-28">
+          <FadeIn>
+            <div className="rounded-3xl border border-black/10 bg-white/70 p-8 shadow-sm backdrop-blur md:p-10">
+              <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+                <div className="max-w-2xl">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-pink-600">
+                    {locale === "id" ? "Dukungan" : "Support"}
+                  </div>
+                  <div className="mt-2 text-2xl font-semibold tracking-tight text-zinc-950">
+                    {locale === "id" ? "Donasi via QRIS DANA" : "Donate via QRIS DANA"}
+                  </div>
+                  <p className="mt-4 text-sm leading-7 text-zinc-700">
+                    {locale === "id"
+                      ? "Dukung terus kegiatan dan UMKM di komunitas Wirausaha Muda Bregas. Scan QRIS di samping menggunakan aplikasi DANA atau m-banking Anda untuk berdonasi."
+                      : "Support the activities and SMEs in the Wirausaha Muda Bregas community. Scan the QRIS using your DANA app or m-banking to donate."}
+                  </p>
+                </div>
+                <div className="flex shrink-0 items-center justify-center">
+                  <div className="relative h-64 w-64 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
+                    <Image
+                      src="/gallery/qris_dana.jpeg"
+                      alt="QRIS DANA"
+                      fill
+                      className="object-contain p-2"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </section>
+
         <section id="kontak" className="pb-24">
           <FadeIn>
             <div className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-zinc-950 px-8 py-10 text-white md:flex-row md:items-center">

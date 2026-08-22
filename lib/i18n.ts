@@ -1,4 +1,4 @@
-﻿export const SUPPORTED_LOCALES = ["id", "en"] as const;
+export const SUPPORTED_LOCALES = ["id", "en"] as const;
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
 export function isSupportedLocale(value: unknown): value is Locale {
@@ -133,17 +133,17 @@ const DICTS: Record<Locale, Dictionary> = {
       ],
       aboutPhotoTitle: "Foto bersama warga WMB",
       aboutPhotoBody:
-        "Silakan ganti asset ini dengan foto asli kegiatan WMB di public/wmb-bersama.jpg (atau .png), lalu ubah src di komponen ini bila perlu.",
+        "Momen kebersamaan antar anggota WMB dalam berbagai kegiatan komunitas yang penuh semangat dan kolaborasi.",
       activitiesTitle: "Kegiatan WMB",
       activitiesBody:
         "Sharing session, kunjungan UMKM, kolaborasi event, dan program mentoring.",
       latestActivitiesTitle: "Kegiatan Terbaru",
       latestActivitiesBody: "Beberapa postingan kegiatan terbaru dari WMB.",
       founderTitle: "Founder",
-      founderName: "Founder Komunitas WMB",
-      founderRole: "Wirausaha Muda Bregas",
+      founderName: "Musollin",
+      founderRole: "Founder WMB",
       founderBody:
-        "WMB lahir dari semangat silaturahmi, berbagi, dan sinergi antar pelaku UMKM. Bagian ini bisa kamu edit untuk menampilkan profil founder (nama, peran, dan cerita singkat).",
+        "WMB lahir dari semangat silaturahmi, berbagi, dan sinergi antar pelaku UMKM. Berawal dari visi untuk memajukan pengusaha lokal, kami terus berkomitmen membangun wadah kolaborasi yang positif dan berdaya saing.",
       contactTitle: "Siap tumbuh bareng WMB?",
       contactBody: "Klik tombol di samping untuk gabung via WhatsApp, atau cek sosial media WMB di bawah.",
       contactCta: "Hubungi Admin",
@@ -236,17 +236,17 @@ const DICTS: Record<Locale, Dictionary> = {
       ],
       aboutPhotoTitle: "A moment with WMB members",
       aboutPhotoBody:
-        "Replace this asset with a real photo in public/wmb-bersama.jpg (or .png), then adjust the src if needed.",
+        "Moments of togetherness among WMB members in various community activities full of enthusiasm and collaboration.",
       activitiesTitle: "WMB Activities",
       activitiesBody:
         "Sharing sessions, SME visits, event collaborations, and mentoring programs.",
       latestActivitiesTitle: "Latest Activities",
       latestActivitiesBody: "A few of the latest activity posts from WMB.",
       founderTitle: "Founder",
-      founderName: "WMB Founder",
-      founderRole: "Wirausaha Muda Bregas",
+      founderName: "Musollin",
+      founderRole: "WMB Founder",
       founderBody:
-        "WMB was built on relationships, sharing, and collaboration among SMEs. Edit this section to show the founder profile (name, role, and a short story).",
+        "WMB was built on relationships, sharing, and collaboration among SMEs. Starting from a vision to advance local entrepreneurs, we remain committed to building a positive and competitive collaboration platform.",
       contactTitle: "Ready to grow with WMB?",
       contactBody: "Tap the button to join via WhatsApp, or check WMB social media below.",
       contactCta: "Contact Admin",
